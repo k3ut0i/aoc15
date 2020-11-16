@@ -1,0 +1,25 @@
+* Notes on my solutions
+
+** TODO Day 1
+I am working with buffers and more imperative features of lisp and so this feels very non-functional way of programming. I have not done that in a while and it feels very weird. The first part is working correctly but my second part seems to give the wrong answer. I don't understand which part I am missing.
+#+begin_src elisp :exports both
+  (load-file "src/day1.el")
+  (count-par (read-line "inputs/day1"))
+#+end_src
+
+#+RESULTS:
+: 74
+
+** Day 2
+Reading lines and working with strings is still the hardest part of the problem for me. I somehow read each dimension string as a lisp symbol and worked it from there.
+#+begin_src elisp :exports both
+  (load-file "src/file-utils.el")
+  (load-file "src/day2.el")
+  (let ((ls (read-lines "inputs/day2")))
+    (values (total ls 'req-area) 
+	    (total ls 'ribbon-length)))
+#+end_src
+
+#+RESULTS:
+| 1588178 | 3783758 |
+

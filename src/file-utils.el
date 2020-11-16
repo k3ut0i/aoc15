@@ -1,0 +1,13 @@
+(defun read-lines (filename)
+  (let ((old-buf (current-buffer))
+	(buf (find-file-noselect filename))
+	(lines nil)
+	(end (point-max)))
+    (set-buffer buf)
+    (goto-char (point-min))
+    (condition-case nil
+	(while (not (= (point) end))
+	  (push (read buf) lines))
+      (error nil))
+    (set-buffer old-buf)
+    lines))
