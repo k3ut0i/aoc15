@@ -23,3 +23,18 @@ Reading lines and working with strings is still the hardest part of the problem 
 #+RESULTS:
 | 1588178 | 3783758 |
 
+** Day 3
+Un-interleaving was a bit tricky to write as I cannot do full recursion. I also used ~seq-reduce~ instead of ~reduce~ to work with a given initial value.
+#+begin_src elisp :exports both
+  (load-file "src/file-utils.el")
+  (load-file "src/day3.el")
+  (multiple-value-bind (fst snd)
+      (unzip (string-to-list (read-file "inputs/day3")))
+    (length (remove-duplicates (append (visited fst)
+				       (visited snd))
+			       :test 'eq-pos)))
+#+end_src
+
+#+RESULTS:
+: 2639
+
