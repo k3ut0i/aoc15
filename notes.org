@@ -38,3 +38,33 @@ Un-interleaving was a bit tricky to write as I cannot do full recursion. I also 
 #+RESULTS:
 : 2639
 
+** Day 4
+What's with MD5 collisions. Do I need to implement a part of the algorithm? I also skipped one in aoc16.
+
+** Day 5
+Started using test-simple package from elpa to do a few tests in file. Part one is simple enough and with small sized entries we can just compose filters rather than try to get all the requirements in one iteration of the string. 
+#+begin_src elisp :exports both
+  (load-file "src/file-utils.el")
+  (load-file "src/day5.el")
+  (let ((lines (read-lines "inputs/day5")))
+    (count-if 'nice lines))
+#+end_src
+
+#+RESULTS:
+: 236
+
+Part two is quite a different altogether. My previous encounters with such problems were swiftly taken care of as the languages I used were prolog and mercury which were very suitable for such search problems.
+#+begin_src elisp :exports both
+  (load-file "src/file-utils.el")
+  (load-file "src/day5.el")
+  (let ((lines (read-lines "inputs/day5")))
+    (count-if 'nice2 lines))
+#+end_src
+
+#+RESULTS:
+: 51
+
+** Day 6
+Multi-dimensional arrays are not supported in Emacs. I had to do a ad-hoc implementation of two dimensional array as a vector in row-major-order. It seems to work fine. ~(defun (setf fun-name))~ style setters are also not supported in emacs-lisp, there is a macro ~gv-define-simple-setter~ that is recommended to create setters but I have not used it yet.
+
+Now coming to the specific problem the method itself is straight forward but my answer seems to be wrong. I should check it for a few small cases and find the error.
