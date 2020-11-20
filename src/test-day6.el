@@ -10,4 +10,5 @@
 (assert-t (equal (parse-order "turn off 499,499 through 500,500")
 		 '(:off 499 499 500 500))
 	  "turn off")
+
 (end-tests)

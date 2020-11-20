@@ -1,3 +1,4 @@
+;;; -*- lexical-binding : t -*-
 (require 'array2d)
 
 (defun parse-positions (ls)
@@ -37,5 +38,18 @@
 
 (defun step-orders (ls array)
   (seq-reduce 'step ls array))
+
+(defun plot-array (array buf)
+  (write-char ?\n buf)
+  (multiple-value-bind (xsize ysize) (array2d-size array)
+    (do ((x 0 (1+ x)))
+	((= x xsize))
+      (do ((y 0 (1+ y)))
+	  ((= y ysize))
+	(if (= (aref2d array x y) 0)
+	    (write-char ?. buf)
+	  (write-char ?* buf)))
+      (write-char ?\n buf))
+    array))
 
 (provide 'day6)
