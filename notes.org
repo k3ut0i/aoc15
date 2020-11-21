@@ -81,3 +81,15 @@ The example test case given in the problem
 
 #+RESULTS:
 : 65412
+
+The problem was solved by just setting the wire to a const number after evaluating it once. This only worked since the circuit was static. In part two I just set the wire ~b~ to the value and my solution to part one gave me the answer. I need to create the circuit twice because the ~get-val~ function destructively memoizes the circuit.
+#+begin_src elisp :exports both
+  (defconst main-grid (mapcar 'parse-joint (read-lines "inputs/day7")))
+  (let* ((main-network (create-network main-grid))
+	 (partone (get-val '(:wire "a") (create-network main-grid))))
+    (puthash "b" (list :const 16076) main-network)
+    (values partone (get-val '(:wire "a") main-network)))
+#+end_src
+
+#+RESULTS:
+| 16076 | 2797 |
