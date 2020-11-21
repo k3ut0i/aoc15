@@ -28,16 +28,35 @@
   (cond ((string= gate-string "AND") :and)
 	((string= gate-string "OR") :or)
 	((string= gate-string "LSHIFT") :lshift)
-	((string= gate-string :RSHIFT) :rshift)	))
+	((string= gate-string "RSHIFT") :rshift)	))
 
-(defun run-gate (gate)
-  (case (car gate)
-    (:const (cadr gate))
-    (:wire (run-gate (cadr gate))) ;; Recursive Here
-    (:not (logand bit-width (lognot (cadr gate))))
-    (:and (logand (cadr gate) (caddr gate)))
-    (:or (logior (cadr gate) (caddr gate)))
-    (:lshift (logand bit-width (ash (cadr gate) (caddr gate))))
-    (:rshift (ash (- (cadr gate)) (caddr gate)))))
+(defun create-network (gate-connections)
+  (let ((network (make-hash-table :test 'equal
+				  :size 330)))
+    (dolist (c gate-connections network)
+      (puthash (caddr c) (car c) network))))
+
+(defun rshift (value count)
+  (ash value (- count)))
+
+(defun get-val (wire network)
+  (case (car wire)
+    (:const (cadr wire))
+    (:wire 
+     (let ((gate (gethash (cadr wire) network)))
+       (case (car gate)
+	 (:const (cadr gate))
+	 (:wire (get-val gate network))
+	 (:not (logand bit-width (lognot (get-val (cadr gate) network))))
+	 (:and (logand (get-val (cadr gate) network)
+		       (get-val (caddr gate) network)))
+	 (:or (logior (get-val (cadr gate) network)
+		      (get-val (caddr gate) network)))
+	 (:lshift (logand bit-width
+			  (ash (get-val (cadr gate) network)
+			       (get-val (caddr gate) network))))
+	 (:rshift (rshift (get-val (cadr gate) network)
+			  (get-val (caddr gate) network)))
+	 (t (error "Unknown gate")))))))
 
 (provide 'day7)
