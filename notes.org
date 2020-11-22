@@ -87,9 +87,24 @@ The problem was solved by just setting the wire to a const number after evaluati
   (defconst main-grid (mapcar 'parse-joint (read-lines "inputs/day7")))
   (let* ((main-network (create-network main-grid))
 	 (partone (get-val '(:wire "a") (create-network main-grid))))
-    (puthash "b" (list :const 16076) main-network)
+    (puthash "b" (list :const partone) main-network)
     (values partone (get-val '(:wire "a") main-network)))
 #+end_src
 
 #+RESULTS:
 | 16076 | 2797 |
+
+** Day 8
+This is quite straight forward to program but debugging would have been a pain because printed representation and in memory representation are different. I worked with list of char ascii values so it went smoothly. For the second path I do not need to actually encode the string, just counting the special chars will be enough. I still wrote a function ~encode-string~ to do it.
+#+begin_src elisp :exports both
+  (load-file "src/file-utils.el")
+  (load-file "src/day8.el")
+  (values  (reduce '+ (mapcar 'mem-string-diff (read-lines "inputs/day8")))
+	   (reduce '+ (mapcar 'encode-len-diff (read-lines "inputs/day8"))))
+#+end_src
+
+#+RESULTS:
+| 1333 | 2046 |
+
+** Day 9
+I am familiar with the shortest path algorithm by Dijsktra but now I require the Hamiltonian path. Declarative searching such as this is very well suited for Prolog. Maybe I'll re-implement it in prolog too.
