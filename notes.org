@@ -38,7 +38,7 @@ Un-interleaving was a bit tricky to write as I cannot do full recursion. I also 
 #+RESULTS:
 : 2639
 
-** Day 4
+** TODO Day 4
 What's with MD5 collisions. Do I need to implement a part of the algorithm? I also skipped one in aoc16.
 
 ** Day 5
@@ -108,3 +108,15 @@ This is quite straight forward to program but debugging would have been a pain b
 
 ** Day 9
 I am familiar with the shortest path algorithm by Dijsktra but now I require the Hamiltonian path. Declarative searching such as this is very well suited for Prolog. Maybe I'll re-implement it in prolog too.
+
+A brute force prolog implementation good enough.
+#+begin_src prolog :exports both
+  :- consult("src/hamiltonian-path.pl").
+  :- distances("inputs/day9", X),
+     findall(Z, trail(X, Y, Z), Zs),
+     min_list(Zs, Ans1), max_list(Zs, Ans2),
+     format('~w ~w~n', [Ans1, Ans2]).
+#+end_src
+
+#+RESULTS:
+: 251 898
