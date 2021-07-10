@@ -24,9 +24,11 @@
 	  distances)
     nw))
 
-(defun shortest-trail-from (from network)
-  "Return the shortest trail starting FROM in the NETWORK."
-  )
+
+(defun shortest-path-through (from vertices network)
+  "Return the ordered list of VERTICES and distance of  the shortest path"
+  (let ((neighbours (gethash from network)))
+    ))
 
 (defun shortest-trail (network)
   "Find the shortest path that covers all the elements of NETWORK.")

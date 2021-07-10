@@ -45,8 +45,20 @@ Un-interleaving was a bit tricky to write as I cannot do full recursion. I also 
 #+RESULTS:
 : 2639
 
-** TODO Day 4
+** DONE Day 4
+   CLOSED: [2021-07-10 Sat 15:47]
 What's with MD5 collisions. Do I need to implement a part of the algorithm? I also skipped one in aoc16.
+#+begin_src perl :var prefix="ckczppom"
+  use lib 'src';
+  use Day4;
+  [Day4::find_num($prefix), Day4::find_num($prefix, 6)];
+#+end_src
+
+#+RESULTS:
+|  117946 |
+| 3938038 |
+
+Well, that was anti-climactic. I thought some magic was to be done to find a collision, just a few seconds and we iterated a few million times to find the solution. The speed may be due to the small size of the input.
 
 ** Day 5
 Started using test-simple package from elpa to do a few tests in file. Part one is simple enough and with small sized entries we can just compose filters rather than try to get all the requirements in one iteration of the string. 
