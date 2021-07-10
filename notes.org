@@ -1,14 +1,21 @@
 * Notes on my solutions
 
-** TODO Day 1
-I am working with buffers and more imperative features of lisp and so this feels very non-functional way of programming. I have not done that in a while and it feels very weird. The first part is working correctly but my second part seems to give the wrong answer. I don't understand which part I am missing.
+** DONE Day 1
+   CLOSED: [2021-07-10 Sat 10:04]
+I am working with buffers and more imperative features of lisp and so this feels very non-functional way of programming. I have not done that in a while and it feels very weird. The first part is working correctly +but my second part seems to give the wrong answer. I don't understand which part I am missing+; I tried a direct implementation for second part which works, but I still can not figure out why ~find-first~ is not working.
 #+begin_src elisp :exports both
   (load-file "src/day1.el")
-  (count-par (read-line "inputs/day1"))
+  (let ((l (read-line "inputs/day1")))
+    (values (find-first l) ;; Why is this buggy?
+	    (day1/find-basement-pos "inputs/day1")
+	    (count-par l)))
 #+end_src
 
 #+RESULTS:
-: 74
+| 5425 | 1795 | 74 |
+
+*** Haskell version
+Solved using ~foldl~ and recursive search.
 
 ** Day 2
 Reading lines and working with strings is still the hardest part of the problem for me. I somehow read each dimension string as a lisp symbol and worked it from there.
@@ -120,3 +127,5 @@ A brute force prolog implementation good enough.
 
 #+RESULTS:
 : 251 898
+
+A more intelligent algorithm would check if there was a faster way between two places and if there is one, we could just remove the longer entry.

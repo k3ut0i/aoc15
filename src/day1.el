@@ -1,3 +1,4 @@
+;;; -*- lexical-binding : t -*-
 (defconst parc '((?\( . 1)
 		 (?\) . -1)))
 
@@ -12,6 +13,7 @@
 	(buf (find-file-noselect filename))
 	(chars nil))
     (set-buffer buf)
+    (read-only-mode)
     (setq start (point-min)
 	  end (point-max))
     (do ((p (goto-char start) (forward-char)))
@@ -22,8 +24,19 @@
 
 (defun find-first (dir-list)
   "Given the list of paranthesis in DIR-LIST return the step when he reaches -1"
-  (let ((floor 0))
-    (do ((l dir-list (cdr l))
-	 (n 0 (1+ n)))
-	((or (null l) (= floor -1)) (cons n floor))
-      (setf floor (+ floor (cdr (assoc (car l) parc)))))))
+  (do ((l dir-list (cdr l))
+       (n 0 (1+ n))
+       (floor 0))
+      ((< floor 0) n)
+    (incf floor (cdr (assoc (car l) parc)))))
+
+(defun day1/find-basement-pos (filename)
+  (let ((buf (find-file-noselect filename)))
+    (with-current-buffer buf
+      (read-only-mode)
+      (do ((p (goto-char (point-min)) (forward-char))
+	   (floor 0))
+	  ((= floor -1) (prog2
+			    (backward-char) ;; step is executed before comparing
+			    (point))) ;; so we back once before returning
+	(incf floor (if (= (following-char) ?\() 1 -1))))))
