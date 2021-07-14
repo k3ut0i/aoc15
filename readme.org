@@ -1,2 +1,2 @@
 * Advent of Code 2015
-I am solving these problems as a practice for emacs-lisp.
+I am solving these problems as a practice for *emacs-lisp* and *haskell*.

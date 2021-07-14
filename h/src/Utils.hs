@@ -3,20 +3,18 @@ module Utils ( printWithPrefix
              , readLines
              , uninterleave) where
 
-import Data.Functor ((<&>))
-
 printWithPrefix :: (Show a) => String -> a -> IO ()
 printWithPrefix s x = putStr s >> print x
 
 splitOn :: (Eq a) => a -> [a] -> [[a]]
-splitOn = s []
-  where s :: (Eq a) => [a] -> a -> [a] -> [[a]]
-        s acc e (x:xs) | e == x = reverse acc : s [] e xs
-                       | otherwise = s (x:acc) e xs
-        s acc _ [] = [reverse acc]
+splitOn = s ([], [])
+  where s :: (Eq a) => ([a], [[a]]) -> a -> [a] -> [[a]]
+        s (acc, as) e (x:xs) | e == x = s ([], reverse acc:as) e xs
+                             | otherwise = s (x:acc, as) e xs
+        s (acc, as) _ [] = reverse acc:as
 
 readLines :: FilePath -> IO [String]
-readLines f = readFile f <&> splitOn '\n'
+readLines f =  splitOn '\n' <$> readFile f
 
 uninterleave :: [a] -> ([a], [a])
 uninterleave [] = ([], [])
