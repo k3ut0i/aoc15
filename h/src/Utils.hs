@@ -11,7 +11,7 @@ splitOn = s ([], [])
   where s :: (Eq a) => ([a], [[a]]) -> a -> [a] -> [[a]]
         s (acc, as) e (x:xs) | e == x = s ([], reverse acc:as) e xs
                              | otherwise = s (x:acc, as) e xs
-        s (acc, as) _ [] = reverse acc:as
+        s (acc, as) _ [] = reverse $ reverse acc:as
 
 readLines :: FilePath -> IO [String]
 readLines f =  splitOn '\n' <$> readFile f

@@ -69,11 +69,30 @@ update (I Toggle r) l = l // [(i, not (l!i)) | i <- explodeRange r]
 lit :: Lights -> Int
 lit = foldl (\acc b -> if b then acc+1 else acc) 0
 
-part1 :: [String] -> Int
-part1 ls = lit (foldl (flip update) l (map read ls))
+part1 :: [Instr] -> Int
+part1 is = lit (foldl (flip update) l is)
   where l = emptyL 1000
 
+type Lights2 = Array (Int, Int) Int
+emptyL2 :: Int -> Lights2
+emptyL2 n = array ((0,0), (n-1, n-1)) [((i, j),0) |
+                                        i <- [0..n-1],
+                                        j <- [0..n-1]]
+update2 :: Instr -> Lights2 -> Lights2
+update2 (I On r) l =  l // [(i, 1+l!i) | i <-explodeRange r]
+update2 (I Off r) l = l // [(i, if l!i == 0 then 0 else -1+l!i) | i <- explodeRange r]
+update2 (I Toggle r) l = l // [(i, 2+l!i) | i <- explodeRange r]
+
+brightness :: Lights2 -> Int
+brightness = sum
+
+part2 :: [Instr] -> Int
+part2 is = brightness (foldl (flip update2) l is)
+  where l = emptyL2 1000
+
 main :: IO ()
-main = printWithPrefix " part1: " . part1 =<< lines
+main = (printWithPrefix " part1: " . part1 =<< is) >>
+       (printWithPrefix "part2: " . part2 =<< is)
   where
-    lines = readLines "inputs/day6"
+    is :: IO [Instr]
+    is = map read <$> readLines "inputs/day6"

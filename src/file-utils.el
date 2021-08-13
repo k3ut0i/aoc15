@@ -12,7 +12,7 @@
 	  (multiple-value-bind (begin end) (line-pos)
 	    (push (buffer-substring-no-properties begin end) lines)
 	    (forward-line)))))
-    lines))
+    (reverse lines)))
 
 (defun read-file (filename)
   "return the whole file FILENAME as a string"

@@ -3,9 +3,9 @@
 
 (test-simple-start)
 
-(assert-t (= 14 (run-gate '(:lshift 7 1))) "LSHIFT 7 by 1")
+;; (assert-t (= 14 (run-gate '(:lshift 7 1))) "LSHIFT 7 by 1")
 
-(assert-t (= 13 (run-gate '(:or 12 5))) "OR 12 and 5")
+;; (assert-t (= 13 (run-gate '(:or 12 5))) "OR 12 and 5")
 
 (assert-t (equal (parse-joint "x AND y -> z")
 		 '((:and (:wire "x") (:wire "y")) . (:wire "z")))

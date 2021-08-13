@@ -83,12 +83,26 @@ Part two is quite a different altogether. My previous encounters with such probl
 #+RESULTS:
 : 51
 
-** Day 6
+** DONE Day 6
+   CLOSED: [2021-08-13 Fri 22:19]
 Multi-dimensional arrays are not supported in Emacs. I had to do a ad-hoc implementation of two dimensional array as a vector in row-major-order. It seems to work fine. ~(defun (setf fun-name))~ style setters are also not supported in emacs-lisp, there is a macro ~gv-define-simple-setter~ that is recommended to create setters but I have not used it yet.
 
-Now coming to the specific problem the method itself is straight forward but my answer seems to be wrong. I should check it for a few small cases and find the error.
-*** Haskell version
-    I do not have much experience with arrays or any mutable states in haskell. I tried with immutable arrays but, got the wrong answer after consuming ~3GB or memory. Somehow both haskell and elisp implementations are wrong. Have I misunderstood the problem somehow?
+I had a very obvious bug in ~read-lines~ function: it returns the lines in reverse order. Since my haskell implementation also had the ~readLines~ in reverse order this gave the same answer to both implementations.
+#+begin_src elisp :exports both 
+  (load-file "src/file-utils.el")
+  (load-file "src/day6.el")
+  (let* ((lines (read-lines "inputs/day6"))
+	 (o (mapcar 'parse-order lines)))
+    (values  (lit-lights (step-orders-1 (mapcar 'parse-order lines) (make-array2d 1000 1000 0)))
+	     (reduce '+ (aref (step-orders-2 o (make-array2d 1000 1000 0)) 1))))
+#+end_src
+
+#+RESULTS:
+| 543903 | 14687245 |
+
+*** DONE Haskell version
+    CLOSED: [2021-08-13 Fri 22:19]
+    I do not have much experience with arrays or any mutable states in haskell. Current solution, using immutable arrays, works but takes > 3GB memory.
     
 ** Day 7
 Just plain recursive evaluation is not working. Max recursive depth ~max-lisp-eval-depth~ is being exceeded. Test cases are working fine. I need to memoize and find a strategy to evaluate from the bottom or something. I also need to plane data structures for my strategy. For small programs simple lists suffice but when things get a least bit complicated keeping it all straight in my head is a pain.

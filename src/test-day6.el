@@ -1,6 +1,7 @@
 (require 'test-simple)
 (test-simple-start)
-(assert-t (load-file "src/day6.el") "load src file")
+(assert-t (load-file "day6.el") "load src file")
+
 (assert-t (equal (parse-order "turn on 0,0 through 999,999")
 		 '(:on 0 0 999 999))
 	  "turn on")
@@ -10,5 +11,16 @@
 (assert-t (equal (parse-order "turn off 499,499 through 500,500")
 		 '(:off 499 499 500 500))
 	  "turn off")
-
+(assert-t (equal (lit-lights (make-array2d 1000 1000 1))
+		 1000000))
+(assert-t (equal (lit-lights (make-array2d 1000 1000 0))
+		 0))
+(let ((a (make-array2d 1000 1000 0))
+      (o '("turn on 0,0 through 999,999"
+	   "toggle 0,0 through 999,0"
+	   "turn off 499,499 through 500,500")))
+  (let ((l (lit-lights (step-orders (mapcar 'parse-order o) a))))
+    (message "%d" l)
+    (assert-t (equal l (- 1000000 1000 4))
+	      "full example sequence")))
 (end-tests)

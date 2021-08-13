@@ -23,4 +23,4 @@
 (defun array2d-size (array)
   (values (aref array 2) (aref array 3)))
 
-(provide 'array2d )
+(provide 'array2d)
