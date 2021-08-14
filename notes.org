@@ -59,6 +59,15 @@ What's with MD5 collisions. Do I need to implement a part of the algorithm? I al
 | 3938038 |
 
 Well, that was anti-climactic. I thought some magic was to be done to find a collision, just a few seconds and we iterated a few million times to find the solution. The speed may be due to the small size of the input.
+<2021-08-14 Sat> I should have checked for available implementations of md5sum. Turns out /emacs/ has a lot of hash functions builtin available through ~secure-hash~ and haskell has ~cryptohash-md5~ library that was preinstalled on my system. The rest of the implementation was quite fast.
+#+begin_src elisp :var prefix="ckczppom" 
+  (load-file "src/day4.el")
+  (values (find-min prefix 5)
+	  (find-min prefix 6))
+#+end_src
+
+#+RESULTS:
+| 117946 | 3938038 |
 
 ** Day 5
 Started using test-simple package from elpa to do a few tests in file. Part one is simple enough and with small sized entries we can just compose filters rather than try to get all the requirements in one iteration of the string. 

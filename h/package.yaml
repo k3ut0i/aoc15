@@ -26,7 +26,8 @@ library:
   source-dirs: src
   dependencies:
     - array
-
+    - cryptohash-md5 # for day4
+    - bytestring # for day4
 executables:
   h-exe:
     main:                Main.hs
