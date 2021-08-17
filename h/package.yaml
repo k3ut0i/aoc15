@@ -9,7 +9,7 @@ copyright:           "2021 keutoi"
 extra-source-files:
 - README.md
 - ChangeLog.md
-
+- notes.org
 # Metadata used when publishing your package
 # synopsis:            Short description of your package
 # category:            Web
@@ -28,6 +28,8 @@ library:
     - array
     - cryptohash-md5 # for day4
     - bytestring # for day4
+    - transformers # for day7
+    - containers # for day7
 executables:
   h-exe:
     main:                Main.hs

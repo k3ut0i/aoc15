@@ -59,8 +59,9 @@ What's with MD5 collisions. Do I need to implement a part of the algorithm? I al
 | 3938038 |
 
 Well, that was anti-climactic. I thought some magic was to be done to find a collision, just a few seconds and we iterated a few million times to find the solution. The speed may be due to the small size of the input.
+
 <2021-08-14 Sat> I should have checked for available implementations of md5sum. Turns out /emacs/ has a lot of hash functions builtin available through ~secure-hash~ and haskell has ~cryptohash-md5~ library that was preinstalled on my system. The rest of the implementation was quite fast.
-#+begin_src elisp :var prefix="ckczppom" 
+#+begin_src elisp :var prefix="ckczppom" :exports both
   (load-file "src/day4.el")
   (values (find-min prefix 5)
 	  (find-min prefix 6))
@@ -99,10 +100,11 @@ Multi-dimensional arrays are not supported in Emacs. I had to do a ad-hoc implem
 I had a very obvious bug in ~read-lines~ function: it returns the lines in reverse order. Since my haskell implementation also had the ~readLines~ in reverse order this gave the same answer to both implementations.
 #+begin_src elisp :exports both 
   (load-file "src/file-utils.el")
+  (load-file "src/array2d.el")
   (load-file "src/day6.el")
   (let* ((lines (read-lines "inputs/day6"))
 	 (o (mapcar 'parse-order lines)))
-    (values  (lit-lights (step-orders-1 (mapcar 'parse-order lines) (make-array2d 1000 1000 0)))
+    (values  (lit-lights (step-orders-1 o (make-array2d 1000 1000 0)))
 	     (reduce '+ (aref (step-orders-2 o (make-array2d 1000 1000 0)) 1))))
 #+end_src
 
@@ -114,7 +116,7 @@ I had a very obvious bug in ~read-lines~ function: it returns the lines in rever
     I do not have much experience with arrays or any mutable states in haskell. Current solution, using immutable arrays, works but takes > 3GB memory.
     
 ** Day 7
-Just plain recursive evaluation is not working. Max recursive depth ~max-lisp-eval-depth~ is being exceeded. Test cases are working fine. I need to memoize and find a strategy to evaluate from the bottom or something. I also need to plane data structures for my strategy. For small programs simple lists suffice but when things get a least bit complicated keeping it all straight in my head is a pain.
+Just plain recursive evaluation is not working. Max recursive depth ~max-lisp-eval-depth~ is being exceeded. Test cases are working fine. I need to memoize and find a strategy to evaluate from the bottom or something. I also need to plan data structures for my strategy. For small programs simple lists suffice but when things get a least bit complicated keeping it all straight in my head is a pain.
 The example test case given in the problem
 #+begin_src elisp :exports both
 (load-file "src/file-utils.el")

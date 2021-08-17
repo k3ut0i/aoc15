@@ -10,7 +10,7 @@ eg = map read ["turn on 0,0 through 999,999",
 
 test :: IO ()
 test = hspec $ do
-  describe "example instructions" $ do
+  describe "test 6: example instructions" $ do
     it "i1" $ do
       lit (update (eg!!0) l) `shouldBe` 1000000
     it "i2" $ do

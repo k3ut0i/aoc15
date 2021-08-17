@@ -3,3 +3,4 @@
 /*-scratch.el
 h/.stack-work
 *.lock
+*.prof

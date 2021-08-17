@@ -1,0 +1,8 @@
+* Haskell notes
+
+** DONE Day7
+   CLOSED: [2021-08-17 Tue 19:41]
+   There is a lot of needless complexity and my solution is unclear.
+   - I should try to use input parser as a separate function rather than linking it to the ~Read~ class. Here I had to make ~Con~ a data type when a ~type Con = Map String ConIn~ would have sufficed.
+   - The recursion is non-trivial, ~evalCon~ ->  ~evalWire~ -> ~eval~ -> ~evalCon~. It could be simpler.
+   - Must try reader and state monads and see how that solution compares to this.
