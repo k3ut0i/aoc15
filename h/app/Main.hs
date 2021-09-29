@@ -11,6 +11,7 @@ import qualified Day6 as D6
 import qualified Day7 as D7
 import qualified Day8 as D8
 import qualified Day10 as D10
+import qualified Day11 as D11
 main :: IO ()
 main =
   -- putStrLn "Day1: " >> D1.main >>
@@ -21,4 +22,5 @@ main =
   -- putStrLn "Day6: " >> D6.main >>
   -- putStrLn "Day7: " >> D7.main >>
   -- putStrLn "Day8: " >> D8.main >>
-  putStrLn "Day10: " >> D10.main
+  -- putStrLn "Day10: " >> D10.main
+  putStrLn "Day11: " >> D11.main

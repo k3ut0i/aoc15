@@ -12,3 +12,9 @@
 ** DONE Day10
    CLOSED: [2021-09-29 Wed 12:30]
    Pretty straightforward implementation. 
+
+** DONE Day 11
+   CLOSED: [2021-09-29 Wed 14:59]
+   - couple of char functions ~ord~, ~chr~.
+   - good use of ~until~
+   - could have improved ~double2s~ for checking that at least 2 unique items exist in a list 

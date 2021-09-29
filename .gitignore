@@ -4,3 +4,5 @@
 h/.stack-work
 *.lock
 *.prof
+*.hi
+*.o
