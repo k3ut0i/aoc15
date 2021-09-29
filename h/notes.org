@@ -8,3 +8,7 @@
    - Must try reader and state monads and see how that solution compares to this.
      
 ** Day8
+
+** DONE Day10
+   CLOSED: [2021-09-29 Wed 12:30]
+   Pretty straightforward implementation. 

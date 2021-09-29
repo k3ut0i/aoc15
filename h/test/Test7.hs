@@ -27,7 +27,7 @@ test :: IO ()
 test = hspec $ do
   describe "test 7:" $ do
     it "123 -> x parsing" $ do
-      read "123 -> x" `shouldBe` Con "x" (RAW 123)
+      read "123 -> x" `shouldBe` Con "x" (RAW (Val 123))
     it "evaluations for the example" $ do
       all (\(s, i) -> Just i == evalS s eg)  egVals `shouldBe` True
       

@@ -4,7 +4,8 @@ module Day7 (
   Con(..),
   ConIn(..),
   evalS,
-  eval
+  eval,
+  Wire(..)
     ) where
 
 import Text.ParserCombinators.ReadP (readP_to_S,

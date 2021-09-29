@@ -1,3 +1,4 @@
+(require 'list-utils)
 (defun parse-distance (s)
   (destructuring-bind (p1 to-literal p2 eq-literal distance)
       (split-string s)
@@ -24,9 +25,8 @@
 	  distances)
     nw))
 
-
 (defun shortest-path-through (from vertices network)
-  "Return the ordered list of VERTICES and distance of  the shortest path"
+  "Return the ordered list of VERTICES and distance of the shortest path"
   (let ((neighbours (gethash from network)))
     ))
 

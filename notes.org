@@ -168,3 +168,12 @@ A brute force prolog implementation good enough.
 : 251 898
 
 A more intelligent algorithm would check if there was a faster way between two places and if there is one, we could just remove the longer entry.
+
+I struggle with this kind of backtracking non-procedural algorithms. Let see how I do in it /elisp/ and /haskell/.
+
+*** Elisp
+
+*** Haskell
+
+** Day 10
+I enjoyed that video of conway.
