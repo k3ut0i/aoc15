@@ -171,9 +171,7 @@ A more intelligent algorithm would check if there was a faster way between two p
 
 I struggle with this kind of backtracking non-procedural algorithms. Let see how I do in it /elisp/ and /haskell/.
 
-*** Elisp
 
-*** Haskell
-
-** Day 10
+** DONE Day 10
+   CLOSED: [2021-09-29 Wed 19:13]
 I enjoyed that video of conway.

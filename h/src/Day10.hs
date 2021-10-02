@@ -21,4 +21,3 @@ main =  printWithPrefix " part1: " (length n40) >>
   where
     n40 = nTimes 40 lookAndSay "1113122113"
     n50 = nTimes 10 lookAndSay n40
-       

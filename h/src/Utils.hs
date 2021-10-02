@@ -32,5 +32,5 @@ sumWith f = foldr (\s a -> a + f s) 0
 nTimes :: Int -> (a -> a) -> a -> a
 nTimes n f x | n == 0 = x
              | n > 0  = nTimes (n-1) f (f x)
-             | n < 0 = error "the number of times a function must be applied should be positive"
+             | otherwise = error "the number of times a function must be applied should be positive"
              

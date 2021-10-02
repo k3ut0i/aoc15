@@ -26,10 +26,13 @@ library:
   source-dirs: src
   dependencies:
     - array
-    - cryptohash-md5 # for day4
-    - bytestring # for day4
-    - transformers # for day7
-    - containers # for day7
+    - cryptohash-md5 # day4
+    - bytestring     # day4
+    - transformers   # day7
+    - containers     # day7
+    - aeson          # day12
+    - scientific     # day12 for number rep
+    - text           # day12
 executables:
   h-exe:
     main:                Main.hs

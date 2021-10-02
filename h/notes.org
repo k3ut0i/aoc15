@@ -18,3 +18,14 @@
    - couple of char functions ~ord~, ~chr~.
    - good use of ~until~
    - could have improved ~double2s~ for checking that at least 2 unique items exist in a list 
+
+** DONE Day 12
+   CLOSED: [2021-10-02 Sat 18:04]
+   I first thought of using regex's to match and extract all numbers in a given string. While I was searching for haskell regex libraries, I can just as easily be done using parser combinators.
+   So let me see how this goes.
+   Hmm, I wrote a integer scanner from the ground up.
+   Now for the second part, I might as well use a JSON library. Does the problem setter expect a ad-hoc JSON parser to be written?
+   <2021-10-02 Sat> I am now using *aeson* for reading the JSON file.
+   - Data.HashMap, ByteString, Data.Text
+   - Data.Scientific, Data.Aeson
+   Used a few external packages 
