@@ -29,3 +29,8 @@
    - Data.HashMap, ByteString, Data.Text
    - Data.Scientific, Data.Aeson
    Used a few external packages 
+
+** Day 13
+   Brute force enumeration of permutations followed by scoring each.
+   - circular pairings part is a bit messy
+   - used ~concatMap~ a couple of times

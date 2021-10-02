@@ -33,4 +33,11 @@ nTimes :: Int -> (a -> a) -> a -> a
 nTimes n f x | n == 0 = x
              | n > 0  = nTimes (n-1) f (f x)
              | otherwise = error "the number of times a function must be applied should be positive"
-             
+
+-- there seems to be a permutations in Data.List             
+permutations :: [a] -> [[a]]
+permutations [] = [[]]
+permutations (x:xs) = concatMap (f x) $ permutations xs
+  where f :: a -> [a] -> [[a]]
+        f x [] = [[x]]
+        f x (y:ys) = (x:y:ys) : map (y:) (f x ys)
