@@ -33,6 +33,7 @@ library:
     - aeson          # day12
     - scientific     # day12 for number rep
     - text           # day12
+    - unordered-containers # day14
 executables:
   h-exe:
     main:                Main.hs

@@ -34,3 +34,7 @@
    Brute force enumeration of permutations followed by scoring each.
    - circular pairings part is a bit messy
    - used ~concatMap~ a couple of times
+
+** Day 14
+   - I should start using ~Map~ data structures rather than working with key-value lists.
+   - All calculations need the read-only input data, so I will try out ~Reader~ monad and finally see how it works out.
