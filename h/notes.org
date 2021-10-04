@@ -30,14 +30,24 @@
    - Data.Scientific, Data.Aeson
    Used a few external packages 
 
-** Day 13
+** DONE Day 13
+   CLOSED: [2021-10-02 Sat 10:19]
    Brute force enumeration of permutations followed by scoring each.
    - circular pairings part is a bit messy
    - used ~concatMap~ a couple of times
 
-** Day 14
+** DONE Day 14
+   CLOSED: [2021-10-04 Mon 10:19]
    - I should start using ~Map~ data structures rather than working with key-value lists.
    - All calculations need the read-only input data, so I will try out ~Reader~ monad and finally see how it works out.
    - Wanted to use ~StateT~ with ~Reader Data~ to change the scores at each moment in time, but felt it was too trivial a use and abandoned it.
    - Good use of ~HashMap~ through out the problem.
    - Should I have made ~scoreAt~ tail recursive?
+     
+** Day 15
+   - Full brute force search of possible recipes
+   - I might be using ~Reader~ a bit too much, but atleast I am getting used to it
+     + Same with ~ReadP~ parsing too.
+   - Finally found a good use for list comprehensions
+   - Using five different parameters for the ~P~ (properties) data structure might have been a bit cumbersome. I could have gotten away with ~(Int, [Int])~ the first ~Int~ for calories and the rest 4 into the list. This would have simplified ~addP~, ~weigh~.
+     
