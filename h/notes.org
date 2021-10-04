@@ -38,3 +38,6 @@
 ** Day 14
    - I should start using ~Map~ data structures rather than working with key-value lists.
    - All calculations need the read-only input data, so I will try out ~Reader~ monad and finally see how it works out.
+   - Wanted to use ~StateT~ with ~Reader Data~ to change the scores at each moment in time, but felt it was too trivial a use and abandoned it.
+   - Good use of ~HashMap~ through out the problem.
+   - Should I have made ~scoreAt~ tail recursive?
