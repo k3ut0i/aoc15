@@ -33,6 +33,7 @@ library
       Day13
       Day14
       Day15
+      Day16
       Day2
       Day3
       Day4
@@ -54,6 +55,7 @@ library
     , bytestring
     , containers
     , cryptohash-md5
+    , hashable
     , scientific
     , text
     , transformers
@@ -78,6 +80,7 @@ test-suite h-test
   other-modules:
       Test1
       Test11
+      Test16
       Test5
       Test6
       Test7
@@ -90,4 +93,5 @@ test-suite h-test
       base >=4.7 && <5
     , h
     , hspec
+    , unordered-containers
   default-language: Haskell2010

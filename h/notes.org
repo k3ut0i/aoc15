@@ -44,10 +44,13 @@
    - Good use of ~HashMap~ through out the problem.
    - Should I have made ~scoreAt~ tail recursive?
      
-** Day 15
+** DONE Day 15
+   CLOSED: [2021-10-04 Mon 19:31]
    - Full brute force search of possible recipes
    - I might be using ~Reader~ a bit too much, but atleast I am getting used to it
      + Same with ~ReadP~ parsing too.
    - Finally found a good use for list comprehensions
    - Using five different parameters for the ~P~ (properties) data structure might have been a bit cumbersome. I could have gotten away with ~(Int, [Int])~ the first ~Int~ for calories and the rest 4 into the list. This would have simplified ~addP~, ~weigh~.
      
+** TODO Day 16
+   - lots of poor decisions that I still stuck through as they offered a good learning opportunity.  

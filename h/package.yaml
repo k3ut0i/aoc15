@@ -34,6 +34,7 @@ library:
     - scientific     # day12 for number rep
     - text           # day12
     - unordered-containers # day14
+    - hashable       # day16
 executables:
   h-exe:
     main:                Main.hs
@@ -56,3 +57,4 @@ tests:
     dependencies:
     - h
     - hspec
+    - unordered-containers # day16
