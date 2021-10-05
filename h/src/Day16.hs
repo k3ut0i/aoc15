@@ -14,7 +14,7 @@ import qualified Data.HashMap.Strict as HM (filter)
 import Data.Hashable
 
 data Obj = Children | Cats | Goldfish | Trees | Cars | Perfumes
-         | Samoyeds | Pomeranians | Akitas | Vizslas 
+         | Samoyeds | Pomeranians | Akitas | Vizslas
   deriving (Eq, Show)
 
 instance Hashable Obj where
@@ -54,7 +54,7 @@ readObj = (string "children" >> return Children)
           +++ (string "pomeranians" >> return Pomeranians)
           +++ (string "akitas" >> return Akitas)
           +++ (string "vizslas" >> return Vizslas)
-  
+
 
 readPair :: ReadP (Obj, Int)
 readPair = do
@@ -65,7 +65,7 @@ readPair = do
 readPoss :: ReadP Poss
 readPoss =
   fromList <$> sepBy readPair (skipSpaces >> char ',' >> skipSpaces)
-  
+
 readAuntP :: ReadP (Int, Poss)
 readAuntP = do
   string "Sue "
@@ -79,7 +79,7 @@ readAunt :: String -> (Int, Poss)
 readAunt s = case readP_to_S readAuntP s of
                [(e, [])] -> e
                _ -> error $ "parse error of aunt entry" ++ s
-               
+
 readData :: FilePath -> IO Aunts
 readData f = fromList . map readAunt <$> readLines f
 
@@ -113,11 +113,9 @@ correctedMatch record detection = foldrWithKey (f detection) True record
               | obj == Pomeranians || obj == Goldfish = (&&) (q <= l obj p)
               | otherwise = (&&) (q == l obj p)
 
-  
+
 main :: IO ()
 main = do
   d <- readData "inputs/day16"
   printWithPrefix " part1: " $ HM.filter (`isSubset` scannerData) d
   printWithPrefix " part2: " $ HM.filter (`correctedMatch` scannerData) d
-  
-       
