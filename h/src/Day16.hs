@@ -102,6 +102,22 @@ isSubset small big = foldrWithKey (f big) True small
     f p obj quantity = (&&) (quantity == lookupDefault (-1) obj p)
     --- ^ implicit assumption that quantity is never negative
     --- so if the lookup fails then the whole predicate fails
+
+correctedMatch :: Poss -> Poss -> Bool
+correctedMatch record detection = foldrWithKey (f detection) True record
+  where
+    l :: Obj -> Poss -> Int
+    l = lookupDefault (-1)
+    f :: Poss -> Obj -> Int -> Bool -> Bool
+    f p obj q | obj == Cats || obj == Trees = (&&) (q >= l obj p)
+              | obj == Pomeranians || obj == Goldfish = (&&) (q <= l obj p)
+              | otherwise = (&&) (q == l obj p)
+
+  
 main :: IO ()
-main = readData "inputs/day16" >>=
-       printWithPrefix " part1: " . HM.filter (isSubset scannerData)
+main = do
+  d <- readData "inputs/day16"
+  printWithPrefix " part1: " $ HM.filter (`isSubset` scannerData) d
+  printWithPrefix " part2: " $ HM.filter (`correctedMatch` scannerData) d
+  
+       

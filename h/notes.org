@@ -52,5 +52,9 @@
    - Finally found a good use for list comprehensions
    - Using five different parameters for the ~P~ (properties) data structure might have been a bit cumbersome. I could have gotten away with ~(Int, [Int])~ the first ~Int~ for calories and the rest 4 into the list. This would have simplified ~addP~, ~weigh~.
      
-** TODO Day 16
+** DONE Day 16
+   CLOSED: [2021-10-05 Tue 16:48]
    - lots of poor decisions that I still stuck through as they offered a good learning opportunity.  
+<2021-10-05 Tue> What the hell is going on with that hashmap filter? If I check ~>=~ then we have a match in the results, but ~==~ is not giving me a match.
+   - This was a pretty stupid mistake. I very explicitly defined ~isSubset~ with inputs named ~small~ and ~big~ so it wont be confusing. And then went at used it in reverse.
+   - That wording *greater than* and *less than* used in part2 was confusing. I am still not sure how it was meant. I flipped them to get a single output and that was the correct answer.
