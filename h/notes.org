@@ -67,3 +67,10 @@
    CLOSED: [2021-10-05 Tue 19:08]
    Pretty anti-climatic for a day 17 question. The only non-trivial thing is the ~combinations~ function. The rest is just ~filter~'s and ~map~'s.
    
+** DONE Day 18
+   CLOSED: [2021-10-06 Wed 19:29]
+   Seems like the standard Conway's Game of Life.
+   - +Finally a problem where I can use ~State~ monad non-trivially.+
+     + Using simple (state -> state) functions are still better here. I think this is mostly due to the fact that GoL problems change state all at once rather than during an iteration.
+   - Got some more practice with ~Data.Array~. Still did not need any faster state, or mutable versions of arrays.
+   - Got stuck a bit on a bug due to my confusion of the return value of ~bounds~ of an array.
