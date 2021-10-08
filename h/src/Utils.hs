@@ -3,7 +3,8 @@ module Utils ( printWithPrefix
              , readLines
              , uninterleave
              , sumWith
-             , nTimes) where
+             , nTimes
+             , Identity) where
 
 
 printWithPrefix :: (Show a) => String -> a -> IO ()
@@ -41,3 +42,15 @@ permutations (x:xs) = concatMap (f x) $ permutations xs
   where f :: a -> [a] -> [[a]]
         f x [] = [[x]]
         f x (y:ys) = (x:y:ys) : map (y:) (f x ys)
+
+newtype Identity a = Identity {runIdentity :: a}
+
+instance Functor Identity where
+  fmap f (Identity x) = Identity (f x)
+
+instance Applicative Identity where
+  pure = Identity
+  (Identity f) <*> (Identity x) = Identity (f x)
+  
+instance Monad Identity where
+  (Identity x) >>= f = f x

@@ -74,3 +74,9 @@
      + Using simple (state -> state) functions are still better here. I think this is mostly due to the fact that GoL problems change state all at once rather than during an iteration.
    - Got some more practice with ~Data.Array~. Still did not need any faster state, or mutable versions of arrays.
    - Got stuck a bit on a bug due to my confusion of the return value of ~bounds~ of an array.
+
+** TODO Day 19
+   Some kind of look ahead scanning. Regexps do this kind of thing very well. Should I try to create a ad-hoc scanner myself for this problem? Something that suites this problem should be small enough, so I will give it a go before jumping to parsers and regex engines.
+   - Decided using parser combinators is the better option. I made a good use of ~ReadP~ combinators here.
+
+  Part2 looks a bit complicated. I should properly work through the example before jumping into implementation.
